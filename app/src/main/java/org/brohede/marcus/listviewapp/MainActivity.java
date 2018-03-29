@@ -2,6 +2,12 @@ package org.brohede.marcus.listviewapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     // Let the static raw data that you use in your ListView be created here as a
@@ -34,5 +40,18 @@ public class MainActivity extends AppCompatActivity {
         //    See: https://material.io/guidelines/components/lists.html#lists-specs
         //    Look for "singel line specs" for "text only" lists and modify the list_item_textview
         //    accordingly
+
+        String[] rawData = {"Item1", "item2", "item3"};
+
+        List<String> listData = new ArrayList<String>(Arrays.asList(rawData));
+
+        ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview,
+                                R.id.item_textview, listData);
+
+        ListView myListView = (ListView)findViewById(R.id.mylist);
+        myListView.setAdapter(adapter);
+
+        adapter.add("hilding");
+
     }
 }
