@@ -2,8 +2,11 @@ package org.brohede.marcus.listviewapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,17 +44,33 @@ public class MainActivity extends AppCompatActivity {
         //    Look for "singel line specs" for "text only" lists and modify the list_item_textview
         //    accordingly
 
-        String[] rawData = {"Item1", "item2", "item3"};
-
+        String[] rawData = {"Item1", "Item2", "Item3", "Item4", "Item5", "Item6"};
         List<String> listData = new ArrayList<String>(Arrays.asList(rawData));
 
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview,
                                 R.id.item_textview, listData);
 
-        ListView myListView = (ListView)findViewById(R.id.mylist);
+        final ListView myListView = (ListView)findViewById(R.id.mylist);
         myListView.setAdapter(adapter);
 
-        adapter.add("hilding");
+        //Setup Click event
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                String[] mountainData = {"Mount Everest, height: 8 848m", "Kilimanjaro, height: 5 895m", "Matterhorn, height: 4 478m",
+                                            "Fuji, height: 3776m", "Mont Blanc, height: 4 810m", "K2, height: 8611m"};
+                List<String> list_mountain_data = new ArrayList<String>(Arrays.asList(mountainData));
+
+                //Gets text of selected list item
+                String selectedText = list_mountain_data.get(position);
+
+
+                Toast.makeText(getApplicationContext(), selectedText, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
 
     }
 }
