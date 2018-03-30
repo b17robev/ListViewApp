@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
         //    Look for "singel line specs" for "text only" lists and modify the list_item_textview
         //    accordingly
 
-        String[] rawData = {"Item1", "Item2", "Item3", "Item4", "Item5", "Item6"};
-        List<String> listData = new ArrayList<String>(Arrays.asList(rawData));
+        String[] rawData = {"Mount Everest", "Kilimanjaro", "Matterhorn", "Fuji", "Mont Blanc", "K2"};
+        List<String> listData = new ArrayList<>(Arrays.asList(rawData));
 
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview,
                                 R.id.item_textview, listData);
 
-        final ListView myListView = (ListView)findViewById(R.id.mylist);
+        ListView myListView = (ListView)findViewById(R.id.mylist);
         myListView.setAdapter(adapter);
 
         //Setup Click event
