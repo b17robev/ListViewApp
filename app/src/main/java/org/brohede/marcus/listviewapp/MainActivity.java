@@ -47,8 +47,14 @@ public class MainActivity extends AppCompatActivity {
         String[] rawData = {"Mount Everest", "Kilimanjaro", "Matterhorn", "Fuji", "Mont Blanc", "K2"};
         List<String> listData = new ArrayList<>(Arrays.asList(rawData));
 
+        Mountain m = new Mountain("Mount Everest", 8848, "Himalayas");
+        Mountain n = new Mountain("dasdas", 8748, "asdasd");
+        final List<Mountain>mountains = new ArrayList<>();
+        mountains.add(m);
+        mountains.add(n);
+
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview,
-                                R.id.item_textview, listData);
+                                R.id.item_textview, mountains);
 
         ListView myListView = (ListView)findViewById(R.id.mylist);
         myListView.setAdapter(adapter);
@@ -58,12 +64,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-                String[] mountainData = {"Mount Everest, height: 8 848m", "Kilimanjaro, height: 5 895m", "Matterhorn, height: 4 478m",
-                                            "Fuji, height: 3776m", "Mont Blanc, height: 4 810m", "K2, height: 8611m"};
-                List<String> list_mountain_data = new ArrayList<String>(Arrays.asList(mountainData));
+
+                //String[] mountainData = {"Mount Everest, height: 8 848m", "Kilimanjaro, height: 5 895m", "Matterhorn, height: 4 478m",
+                                           // "Fuji, height: 3776m", "Mont Blanc, height: 4 810m", "K2, height: 8611m"};
+                //List<String> list_mountain_data = new ArrayList<String>(Arrays.asList(mountainData));
 
                 //Gets text of selected list item
-                String selectedText = list_mountain_data.get(position);
+                String selectedText = mountains.get(position).infoText();
 
 
                 Toast.makeText(getApplicationContext(), selectedText, Toast.LENGTH_SHORT).show();
