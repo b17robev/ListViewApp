@@ -22,7 +22,7 @@ public class Mountain{
         return name;
     }
 
-    public String infoText(){
+    public String getInfoText(){
         return name + ", " + height + ", " + location;
     }
 

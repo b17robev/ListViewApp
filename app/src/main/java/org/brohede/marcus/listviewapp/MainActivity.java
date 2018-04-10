@@ -44,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
         //    Look for "singel line specs" for "text only" lists and modify the list_item_textview
         //    accordingly
 
-        String[] rawData = {"Mount Everest", "Kilimanjaro", "Matterhorn", "Fuji", "Mont Blanc", "K2"};
-        List<String> listData = new ArrayList<>(Arrays.asList(rawData));
-
         Mountain m = new Mountain("Mount Everest", 8848, "Himalayas");
-        Mountain n = new Mountain("dasdas", 8748, "asdasd");
+        Mountain n = new Mountain("Mont Blanc", 4808, "Alps");
+        Mountain m2 = new Mountain("Denali", 6190,"Alaska");
+
         final List<Mountain>mountains = new ArrayList<>();
         mountains.add(m);
         mountains.add(n);
+        mountains.add(m2);
 
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview,
                                 R.id.item_textview, mountains);
@@ -65,12 +65,8 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
 
-                //String[] mountainData = {"Mount Everest, height: 8 848m", "Kilimanjaro, height: 5 895m", "Matterhorn, height: 4 478m",
-                                           // "Fuji, height: 3776m", "Mont Blanc, height: 4 810m", "K2, height: 8611m"};
-                //List<String> list_mountain_data = new ArrayList<String>(Arrays.asList(mountainData));
-
                 //Gets text of selected list item
-                String selectedText = mountains.get(position).infoText();
+                String selectedText = mountains.get(position).getInfoText();
 
 
                 Toast.makeText(getApplicationContext(), selectedText, Toast.LENGTH_SHORT).show();
